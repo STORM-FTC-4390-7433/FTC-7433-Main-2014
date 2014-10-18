@@ -16,9 +16,9 @@ if(RightMotorPower < -100){
 	RightMotorPower = -100;}
 
 motor[t.BackLeft] = LeftMotorPower;
-	motor[t.BackRight] = RightMotorPower;
+	motor[t.BackRight] = -RightMotorPower;
 	motor[t.FrontLeft] = LeftMotorPower;
-	motor[t.FrontRight] = RightMotorPower;
+	motor[t.FrontRight] = -RightMotorPower;
 
 	return;
 }

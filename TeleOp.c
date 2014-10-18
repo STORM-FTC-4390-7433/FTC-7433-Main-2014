@@ -55,7 +55,7 @@ task main() {
   	{
        getJoystickSettings(joystick);
 
-       updateDriveSys (drive, joystick.joy1_y1*(100/128), joystick.joy1_y2*(100/128));
+       updateDriveSys (drive, joystick.joy1_y1*(100.0/128.0), joystick.joy1_y2*(100.0/128.0));
        updateLiftSys (lift, joy2Btn(4), joy2Btn(2));
        updateIntakeSys (intake, joy1Btn(7), joy1Btn(8));
        updateGateSys (gate, joy2Btn(3), joy2Btn(1));
