@@ -15,10 +15,10 @@ if(RightMotorPower > 100){
 if(RightMotorPower < -100){
 	RightMotorPower = -100;}
 
-motor[t.backLeft] = LeftMotorPower;
-	motor[t.backRight] = RightMotorPower;
-	motor[t.frontLeft] = LeftMotorPower;
-	motor[t.frontRight] = RightMotorPower;
+motor[t.BackLeft] = LeftMotorPower;
+	motor[t.BackRight] = RightMotorPower;
+	motor[t.FrontLeft] = LeftMotorPower;
+	motor[t.FrontRight] = RightMotorPower;
 
 	return;
 }

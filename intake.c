@@ -5,12 +5,12 @@ void updateIntakeSys (IntakeSys t, bool LeftTrigger, bool RightTrigger){
 
 
 	if(RightTrigger){
-		Motor[t.intake] = 100;
+		motor[t.intake] = 100;
 	}else if(LeftTrigger){
-		Motor[t.intake] = -100;
+		motor[t.intake] = -100;
 	}
 	else {
-		Motor[t.intake] = 0;
+		motor[t.intake] = 0;
 	}
 	return;
 }
