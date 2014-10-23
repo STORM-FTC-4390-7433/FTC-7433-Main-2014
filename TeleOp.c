@@ -28,13 +28,13 @@
 
 DriveSys drive;
 LiftSys lift;
-IntakeSys intake;
+IntakeSys intake; //Control variables
 GateSys gate;
 
-void initializeRobot(){
+void initializeRobot(){ //Init function
 	drive.BackLeft = backLeft;
 	drive.BackRight = backRight;
-	drive.FrontRight = frontRight;
+	drive.FrontRight = frontRight; //Control variable declaration
 	drive.FrontLeft = frontLeft;
 	gate.gate = gateServo;
 	lift.lift = liftMotor;
@@ -43,22 +43,22 @@ void initializeRobot(){
 	return;
 }
 
-task main() {
+task main() { //MAIN FUNCTION
 
-	initializeRobot();
+	initializeRobot(); //Inits robot
 
 	#ifdef COMPETITION
-	waitForStart();
+	waitForStart(); //Waits for start
 	#endif
 
 	while(true)
   	{
        getJoystickSettings(joystick);
 
-       updateDriveSys (drive, joystick.joy1_y1*(100/128), joystick.joy1_y2*(100/128));
-       updateLiftSys (lift, joy2Btn(4), joy2Btn(2));
-       updateIntakeSys (intake, joy1Btn(7), joy1Btn(8));
-       updateGateSys (gate, joy2Btn(3), joy2Btn(1));
+       updateDriveSys (drive, joystick.joy1_y1*(100/128), joystick.joy1_y2*(100/128)); //When joystick Y moved, change motor values
+       updateLiftSys (lift, joy2Btn(4), joy2Btn(2)); //Y or A buttons pressed, update lift
+       updateIntakeSys (intake, joy1Btn(7), joy1Btn(8)); //Left or Right trigger pressed, update intake
+       updateGateSys (gate, joy2Btn(3), joy2Btn(1)); //B or X button pressed, update gate
 
     }
 }
