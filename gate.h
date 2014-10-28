@@ -4,7 +4,7 @@
 typedef struct {
 
 
-	TServoIndex gate;
+	TServoIndex gate; //Declare gate servo
 
 
 } GateSys;

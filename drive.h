@@ -5,7 +5,7 @@ typedef struct {
 	//pointers to motors in the array motor[]
 	//frontLeft and frontRight should have motorEncoders mounted
 	tMotor BackLeft,
-		   BackRight,
+		   BackRight, //Declare motors
 		   FrontLeft,
 		   FrontRight;
 } DriveSys;
