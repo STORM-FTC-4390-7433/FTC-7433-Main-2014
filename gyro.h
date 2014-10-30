@@ -3,8 +3,9 @@
 
 typedef struct {
 
-	tSensor gyroscope;// gives degrees change per second
+	tSensors gyroscope;// gives degrees change per second
 	float targetAngle;
+	float gyroscopeValue;
 
 } GyroSys;
 

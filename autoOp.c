@@ -1,7 +1,7 @@
 #pragma config(Hubs,  S1, HTMotor,  HTMotor,  HTMotor,  HTServo)
 #pragma config(Sensor, S2,     lightLeft,      sensorLightActive)
 #pragma config(Sensor, S3,     lightRight,     sensorLightActive)
-#pragma config(Sensor, S4,     gyro,           sensorI2CHiTechnicGyro)
+#pragma config(Sensor, S4,     gyroSensor,           sensorI2CHiTechnicGyro)
 #pragma config(Motor,  mtr_S1_C1_1,     backLeft,      tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C1_2,     backRight,     tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C2_1,     frontLeft,     tmotorTetrix, openLoop)
@@ -27,11 +27,15 @@
 #include "intake.c"
 #include "gate.h"
 #include "gate.c"
+#include "gyro.h"
+GyroSys gyr;
+#include "gyro.c"
 
 DriveSys drive;
 LiftSys lift;
 IntakeSys intake; //Control variable declaration
 GateSys gate;
+
 
 void initializeRobot(){ //Robot initiliazation code
 	drive.BackLeft = backLeft;
@@ -41,11 +45,12 @@ void initializeRobot(){ //Robot initiliazation code
 	gate.gate = gateServo;
 	lift.lift = liftMotor;
 	intake.intake = intakeMotor;
+	gyr.gyroscope = gyroSensor;
 
 	return;
 }
 
-task main() {
+/*task main() {
 void followLine(){
 
 		if(SensorValue(lightLeft && lightRight) < 80){
@@ -73,7 +78,7 @@ void followLine(){
 	 }
 }
 
-
+*/
 
 
 
@@ -85,11 +90,12 @@ task main() {
 	waitForStart(); //Wait for match start
 #endif
 
-	updateDriveSys (drive, 100, 100); //Sets motor power to full
-	wait1Msec(10000); //Wait 10k milliseconds (10 seconds)
-	updateDriveSys (drive, 0, 0); //Sets motor power to none
+//	updateDriveSys (drive, 100, 100); //Sets motor power to full
+//	wait1Msec(10000); //Wait 10k milliseconds (10 seconds)
+//	updateDriveSys (drive, 0, 0); //Sets motor power to none
 
-	followLine();
+//	followLine();
 
+startTask(updateGyroSys);
 
 }

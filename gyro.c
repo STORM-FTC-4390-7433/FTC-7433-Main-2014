@@ -1,27 +1,34 @@
-
 #ifndef GYROSYS_C
 #define GYROSYS_C
 
-task updateGyroSys( DriveSys t, GyroSys g) {
+void driveGyro (int LeftMotorPower, int RightMotorPower) {
+	motor[backLeft] = LeftMotorPower;
+	motor[backRight] = -RightMotorPower;
+	motor[frontLeft] = LeftMotorPower;
+	motor[frontRight] = -RightMotorPower;
+}
+
+task updateGyroSys(){
+	driveGyro(100, 100);
 
 	while(true) {
 		wait1Msec(50);
-		g.gyroscope = sensorValue[S4]/20.;
+		gyr.gyroscopeValue = SensorValue[S4]/20.;
 
-		if (g.gyroscope > 0) {
-			while (g.gyroscope > 0) {
-				motor[t.FrontRight] = 50;
-				motor[t.BackRight] = 50;
-				motor[t.FrontRight] = -50;
-				motor[t.BackRight] = -50;
+		if (gyr.gyroscopeValue > 1) {
+			while (gyr.gyroscopeValue > 1) {
+				driveGyro(-50, 50);
+			}
+	  }
+		else if (gyr.gyroscopeValue < -1) {
+			while (gyr.gyroscopeValue < -1) {
+				driveGyro(50, -50);
 			}
 		}
-		else if (g.gyroscope < 0) {
-			while (g.gyroscope < 0) {
-				motor[t.FrontRight] = -50;
-				motor[t.BackRight] = -50;
-				motor[t.FrontRight] = 50;
-				motor[t.BackRight] = 50;
-			}
-		}
+
+		driveGyro(100, 100);
+	}
+}
+
+
 	#endif
