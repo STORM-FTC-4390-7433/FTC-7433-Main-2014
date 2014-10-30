@@ -10,8 +10,8 @@ task updateGyroSys( DriveSys t, GyroSys g) {
 
 		if (g.gyroscope > 0) {
 			while (g.gyroscope > 0) {
-				motor[t.FrontRight] = 50;
-				motor[t.BackRight] = 50;
+				motor[t.FrontRight] = 50; //More witchcraft.
+				motor[t.BackRight] = 50; //Whoever wrote this, please comment it!
 				motor[t.FrontRight] = -50;
 				motor[t.BackRight] = -50;
 			}
@@ -25,3 +25,10 @@ task updateGyroSys( DriveSys t, GyroSys g) {
 			}
 		}
 	#endif
+
+	/* __      __.__  __         .__                         _____  __  ._.
+/  \    /  \__|/  |_  ____ |  |__   ________________ _/ ____\/  |_| |
+\   \/\/   /  \   __\/ ___\|  |  \_/ ___\_  __ \__  \\   __\\   __\ |
+ \        /|  ||  | \  \___|   Y  \  \___|  | \// __ \|  |   |  |  \|
+  \__/\  / |__||__|  \___  >___|  /\___  >__|  (____  /__|   |__|  __
+       \/                \/     \/     \/           \/             \/*/

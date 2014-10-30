@@ -9,7 +9,7 @@ task main()
 {
 	while (SensorValue[S3] == 0) {
 
-		motor[leftMotor] = 50;
+		motor[leftMotor] = 50; //While sensor not pressed, go forward. (Why?)
 		motor[rightMotor] = 50;
 
 	}
