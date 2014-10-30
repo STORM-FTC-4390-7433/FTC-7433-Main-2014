@@ -50,8 +50,8 @@ void followLine(){
 
 		if(SensorValue(lightLeft && lightRight) < 80){
 			motor[FrontRight]=100;
-			motor[FrontLeft]=100;
-			motor[BackRight]=100;
+			motor[FrontLeft]=100; //BOTH light sensor values are <80
+			motor[BackRight]=100; //go straight
 			motor[BackLeft]=100;
 	}
 
@@ -59,15 +59,15 @@ void followLine(){
 	else if(SensorValue(lightLeft) < 80){
 		motor[FrontRight]=100;
 		motor[FrontLeft]=0;
-		motor[BackRight]=100;
-		motor[BackLeft]=0;
+		motor[BackRight]=100; //ONLY left light sensor value is <80
+		motor[BackLeft]=0; //Turn right
 	}
 
 
 	 	else if(SensorValue(lightRight) < 80){
 		motor[FrontRight]=0;
-		motor[FrontLeft]=100;
-		motor[BackRight]=0;
+		motor[FrontLeft]=100; //ONLY right light sensor value is <80
+		motor[BackRight]=0; //Turn left
 		motor[BackLeft]=100;
 
 	 }
