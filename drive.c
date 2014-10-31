@@ -5,15 +5,13 @@ void updateDriveSys (DriveSys t, int LeftMotorPower, int RightMotorPower){
 
 if(LeftMotorPower > 100){
 	LeftMotorPower = 100;}
-
-if(LeftMotorPower < -100){
-	LeftMotorPower = -100;} //Places a cap on motor power
+	else if(LeftMotorPower < -100){ //Caps motor power
+		LeftMotorPower = -100}
 
 if(RightMotorPower > 100){
 	RightMotorPower = 100;}
-
-if(RightMotorPower < -100){
-	RightMotorPower = -100;}
+	else if(RightMotorPower < -100){ //Slightly more efficient than before
+		RightMotorPower = -100}
 
 	motor[t.BackLeft] = LeftMotorPower;
 	motor[t.BackRight] = -RightMotorPower;

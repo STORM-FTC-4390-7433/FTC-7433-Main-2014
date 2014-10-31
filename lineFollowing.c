@@ -11,7 +11,7 @@ task main()
 	{
 	}
 	while (true) {
-		while(SensorValue[colorSensor] >= 853)
+		while(SensorValue[colorSensor] >= 853) //Colour sensors are a thing? How does that even work under different lighting conditions?
 		{
 			motor[leftMotor] = 50;
 			motor[rightMotor] = 50;

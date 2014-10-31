@@ -18,6 +18,14 @@ task updateGyroSys(){
 		if (gyr.gyroscopeValue > 1) {
 			while (gyr.gyroscopeValue > 1) {
 				driveGyro(-50, 50);
+
+		if (g.gyroscope > 0) {
+			while (g.gyroscope > 0) {
+				motor[t.FrontRight] = 50; //More witchcraft.
+				motor[t.BackRight] = 50; //Whoever wrote this, please comment it!
+				motor[t.FrontRight] = -50;
+				motor[t.BackRight] = -50;
+
 			}
 	  }
 		else if (gyr.gyroscopeValue < -1) {

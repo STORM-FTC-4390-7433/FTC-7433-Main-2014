@@ -7,16 +7,31 @@
 
 task main()
 {
-	motor[leftMotor] = 50;
+	motor[leftMotor] = 50; //Go straight slowly
 	motor[rightMotor] = 50;
 
-	wait1Msec(2000);
+	wait1Msec(2000); //Wait 2 seconds
 
-	motor[leftMotor] = -50;
+	motor[leftMotor] = -50; //go backwards slowly
 	motor[rightMotor] = -50;
 
-	wait1Msec(2000);
+	wait1Msec(2000); //Wait 2 seconds
 
-	motor[leftMotor] = 0;
+	motor[leftMotor] = 0; //Stop
 	motor[rightMotor] = 0;
 }
+
+
+
+
+
+
+
+
+
+/* __      __________   ________       _____    __________________ .___.___     _____ _____________________._.
+/  \    /  \_____  \  \_____  \     /  _  \  /   _____/\_   ___ \|   |   |   /  _  \\______   \__    ___/| |
+\   \/\/   //   |   \  /   |   \   /  /_\  \ \_____  \ /    \  \/|   |   |  /  /_\  \|       _/ |    |   | |
+ \        //    |    \/    |    \ /    |    \/        \\     \___|   |   | /    |    \    |   \ |    |    \|
+  \__/\  / \_______  /\_______  / \____|__  /_______  / \______  /___|___| \____|__  /____|_  / |____|    __
+       \/          \/         \/          \/        \/         \/                  \/       \/            \/*/
