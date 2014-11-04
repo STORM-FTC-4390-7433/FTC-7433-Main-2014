@@ -36,12 +36,9 @@ LiftSys lift;
 IntakeSys intake; //Control variable declaration
 GateSys gate;
 
-
 void initializeRobot(){ //Robot initiliazation code
 	drive.BackLeft = backLeft;
-	drive.BackRight = backRight;  //Declare motor control variables
-	drive.FrontRight = frontRight;
-	drive.FrontLeft = frontLeft;
+	drive.BackRight = backRight; //Declare motor control variables
 	gate.gate = gateServo;
 	lift.lift = liftMotor;
 	intake.intake = intakeMotor;
@@ -50,52 +47,14 @@ void initializeRobot(){ //Robot initiliazation code
 	return;
 }
 
-/*task main() {
-void followLine(){
-
-		if(SensorValue(lightLeft && lightRight) < 80){
-			motor[FrontRight]=100;
-			motor[FrontLeft]=100; //BOTH light sensor values are <80
-			motor[BackRight]=100; //go straight
-			motor[BackLeft]=100;
-	}
-
-
-	else if(SensorValue(lightLeft) < 80){
-		motor[FrontRight]=100;
-		motor[FrontLeft]=0;
-		motor[BackRight]=100; //ONLY left light sensor value is <80
-		motor[BackLeft]=0; //Turn right
-	}
-
-
-	 	else if(SensorValue(lightRight) < 80){
-		motor[FrontRight]=0;
-		motor[FrontLeft]=100; //ONLY right light sensor value is <80
-		motor[BackRight]=0; //Turn left
-		motor[BackLeft]=100;
-
-	 }
-}
-
-*/
-
-
-
 task main() {
 
-	initializeRobot(); //Calls robot init function
+	initializeRobot(); //Inits robot
 
-#ifdef COMPETITION
-	waitForStart(); //Wait for match start
-#endif
+	#ifdef COMPETITION
+	waitForStart(); //Waits for start
+	#endif
 
-//	updateDriveSys (drive, 100, 100); //Sets motor power to full
-//	wait1Msec(10000); //Wait 10k milliseconds (10 seconds)
-//	updateDriveSys (drive, 0, 0); //Sets motor power to none
-
-//	followLine();
-
-startTask(updateGyroSys);
+	startTask(updateGyroSys);
 
 }
