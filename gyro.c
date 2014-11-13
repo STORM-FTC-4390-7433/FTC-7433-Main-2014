@@ -1,15 +1,15 @@
 #ifndef GYROSYS_C
 #define GYROSYS_C
 
-void driveGyro (int LeftMotorPower, int RightMotorPower) {
-	motor[backLeft] = LeftMotorPower;
-	motor[backRight] = -RightMotorPower;
-	motor[frontLeft] = LeftMotorPower;
-	motor[frontRight] = -RightMotorPower;
+void driveGyro (DriveSys t, int LeftMotorPower, int RightMotorPower) {
+	motor[t.backLeft] = LeftMotorPower;
+	motor[t.backRight] = -RightMotorPower;
+	motor[t.frontLeft] = LeftMotorPower;
+	motor[t.frontRight] = -RightMotorPower;
 }
 
 task updateGyroSys(){
-	driveGyro(100, 100);
+	driveGyro(drive, 100, 100);
 
 	while(true) {
 		wait1Msec(50);
