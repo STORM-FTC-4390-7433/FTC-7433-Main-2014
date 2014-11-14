@@ -4,13 +4,16 @@
 void updateLiftSys (LiftSys t, bool ButtonY, bool ButtonA ){
 
 	if(ButtonY){
-		motor[t.lift] = 100; //Y button pressed, raise lift.
+		motor[t.frontLift] = 100;
+		motor[t.backLift] = 100;//Y button pressed, raise lift.
 	}
 	else if(ButtonA){
-		motor[t.lift] = -100; //A button pressed, lower lift.
+		motor[t.frontLift] = -100;
+		motor[t.backLift] = -100; //A button pressed, lower lift.
 	}
 	else {
-		motor[t.lift] = 0; //No button pressed, stop lift.
+		motor[t.frontLift] = 0;
+		motor[t.backLift] = 0; //No button pressed, stop lift.
 	}
 
 
