@@ -16,10 +16,10 @@ else if(RightMotorPower < -100){ //Slightly more efficient than before
 	RightMotorPower = -100;
 }
 
-	motor[t.BackLeft] = LeftMotorPower;
-	motor[t.BackRight] = -RightMotorPower;
-	motor[t.FrontLeft] = LeftMotorPower;
-	motor[t.FrontRight] = -RightMotorPower;
+	motor[t.backLeft] = LeftMotorPower;
+	motor[t.backRight] = -RightMotorPower;
+	motor[t.frontLeft] = LeftMotorPower;
+	motor[t.frontRight] = -RightMotorPower;
 
 	return;
 }
