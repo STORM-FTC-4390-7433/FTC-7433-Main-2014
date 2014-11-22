@@ -10,8 +10,8 @@
 #pragma config(Motor,  mtr_S1_C3_2,     backLiftMotor, tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C4_1,     intakeMotor,   tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C4_2,     motorK,        tmotorTetrix, openLoop)
-#pragma config(Servo,  srvo_S2_C1_1,    gateServo,            tServoStandard)
-#pragma config(Servo,  srvo_S2_C1_2,    clawServo,            tServoStandard)
+#pragma config(Servo,  srvo_S2_C1_1,    clawServo,            tServoStandard)
+#pragma config(Servo,  srvo_S2_C1_2,    gateServo,            tServoStandard)
 #pragma config(Servo,  srvo_S2_C1_3,    servo3,               tServoNone)
 #pragma config(Servo,  srvo_S2_C1_4,    servo4,               tServoNone)
 #pragma config(Servo,  srvo_S2_C1_5,    servo5,               tServoNone)
@@ -21,6 +21,8 @@
 #define COMPETITION
 
 #include "JoystickDriver.c"  //Include file to "handle" the Bluetooth messages.
+#include "claw.h"
+#include "claw.c"
 #include "drive.h"
 #include "drive.c"
 #include "lift.h"
@@ -34,6 +36,7 @@ DriveSys drive;
 LiftSys lift;
 IntakeSys intake; //Control variables
 GateSys gate;
+ClawSys claw;
 
 void initializeRobot(){ //Init function
 	drive.backLeft = backLeftMotor;
@@ -44,6 +47,8 @@ void initializeRobot(){ //Init function
 	lift.frontLift = frontLiftMotor;
 	lift.backLift = backLiftMotor;
 	intake.intake = intakeMotor;
+	claw.claw = clawServo;
+	claw.isDisabled = false;
 
 	return;
 }
@@ -58,12 +63,14 @@ task main() { //MAIN FUNCTION
 
 	while(true)
   	{
-       getJoystickSettings(joystick);
-
-       updateDriveSys (drive, joystick.joy1_y1*(100/128.0), joystick.joy1_y2*(100/128.0)); //When joystick Y moved, change motor values
-       updateLiftSys (lift, joy2Btn(4), joy2Btn(2)); //Y or A buttons pressed, update lift
-       updateIntakeSys (intake, joy1Btn(7), joy1Btn(8)); //Left or Right trigger pressed, update intake
-       updateGateSys (gate, joy2Btn(3), joy2Btn(1)); //B or X button pressed, update gate
+      getJoystickSettings(joystick);
+      if(abs(joystick.joy1_y1*(100/128.0)) > 3 || abs(joystick.joy1_y2*(100/128.0)) > 3){
+      	updateDriveSys (drive, joystick.joy1_y1*(100/128.0), joystick.joy1_y2*(100/128.0)); //When joystick Y moved, change motor values
+    	}
+      updateLiftSys (lift, joy2Btn(3), joy2Btn(1), claw); //Y or A buttons pressed, update lift
+      updateIntakeSys (intake, joy1Btn(3), joy1Btn(1)); //Left or Right trigger pressed, update intake
+      updateGateSys (gate, joy2Btn(4), joy2Btn(2)); //B or X button pressed, update gate
+      updateClawSys (claw, joy1Btn(4), joy1Btn(2));
 
     }
 }

@@ -9,8 +9,8 @@
 #pragma config(Motor,  mtr_S1_C3_2,     backLiftMotor, tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C4_1,     intakeMotor,   tmotorTetrix, openLoop)
 #pragma config(Motor,  mtr_S1_C4_2,     motorK,        tmotorTetrix, openLoop)
-#pragma config(Servo,  srvo_S2_C1_1,    gateServo,            tServoStandard)
-#pragma config(Servo,  srvo_S2_C1_2,    clawServo,            tServoStandard)
+#pragma config(Servo,  srvo_S2_C1_1,    clawServo,            tServoStandard)
+#pragma config(Servo,  srvo_S2_C1_2,    gateServo,            tServoStandard)
 #pragma config(Servo,  srvo_S2_C1_3,    servo3,               tServoNone)
 #pragma config(Servo,  srvo_S2_C1_4,    servo4,               tServoNone)
 #pragma config(Servo,  srvo_S2_C1_5,    servo5,               tServoNone)
@@ -28,6 +28,8 @@
 #include "intake.c"
 #include "gate.h"
 #include "gate.c"
+#include "claw.h"
+#include "claw.c"
 #include "gyro.h"
 GyroSys gyr;
 #include "gyro.c"
@@ -36,6 +38,7 @@ DriveSys drive;
 LiftSys lift;
 IntakeSys intake; //Control variable declaration
 GateSys gate;
+ClawSys claw;
 
 void initializeRobot(){ //Robot initiliazation code
 	drive.backLeft = backLeftMotor;
@@ -47,6 +50,7 @@ void initializeRobot(){ //Robot initiliazation code
 	lift.backLift = backLiftMotor;
 	intake.intake = intakeMotor;
 	gyr.gyroscope = gyroSensor;
+	claw.claw = clawServo;
 
 	return;
 }
