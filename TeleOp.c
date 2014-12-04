@@ -64,9 +64,9 @@ task main() { //MAIN FUNCTION
 	while(true)
   	{
       getJoystickSettings(joystick);
-      if(abs(joystick.joy1_y1*(100/128.0)) > 3 || abs(joystick.joy1_y2*(100/128.0)) > 3){
-      	updateDriveSys (drive, joystick.joy1_y1*(100/128.0), joystick.joy1_y2*(100/128.0)); //When joystick Y moved, change motor values
-    	}
+      //if(abs(joystick.joy1_y1*(100/128.0)) > 3 || abs(joystick.joy1_y2*(100/128.0)) > 3){
+      	updateDriveSys (drive, joystick.joy1_y1*(-100/128.0), joystick.joy1_y2*(-100/128.0)); //When joystick Y moved, change motor values
+    	//}
       updateLiftSys (lift, joy2Btn(3), joy2Btn(1), claw); //Y or A buttons pressed, update lift
       updateIntakeSys (intake, joy1Btn(3), joy1Btn(1)); //Left or Right trigger pressed, update intake
       updateGateSys (gate, joy2Btn(4), joy2Btn(2)); //B or X button pressed, update gate

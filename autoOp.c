@@ -20,6 +20,8 @@
 #define COMPETITION
 
 #include "JoystickDriver.c"
+#include "claw.h"
+#include "claw.c"
 #include "drive.h"
 #include "drive.c"
 #include "lift.h" //Import other files called in this one
@@ -28,8 +30,6 @@
 #include "intake.c"
 #include "gate.h"
 #include "gate.c"
-#include "claw.h"
-#include "claw.c"
 #include "gyro.h"
 GyroSys gyr;
 #include "gyro.c"
@@ -110,7 +110,14 @@ task main() {
 	waitForStart(); //Waits for start
 	#endif
 
+	updateDriveSys (drive, -100, -100);
+	wait1Msec(6000);
+	updateDriveSys (drive, -100, 0);
+	wait1Msec(3000);
+	updateDriveSys (drive, -100, -100);
+	wait1Msec(8000);
+	updateDriveSys (drive, 0, 0);
 
-	startTask(updateGyroSys);
+//	startTask(updateGyroSys);
 
 }
